@@ -32,6 +32,15 @@ public class Project {
 	if (a != ((n * data.length) + (5 * (data.length + 1))))
 	    a = ((n * data.length) + (5 * (data.length + 1)));
 
+	int largest = data[0];
+	for (i = 0; i < data.length; i++)
+	    if (data[i] > largest)
+		largest = data[i];
+
+	
+        if (b != (largest + 20))
+	    b = (largest + 20);
+
         DrawableFrame df = new DrawableFrame("Project 1");
         df.show();
         df.setSize(a, b);
