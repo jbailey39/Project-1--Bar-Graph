@@ -1,0 +1,52 @@
+import java.awt.*;
+import jpb.*;
+
+public class Project {
+
+    public static void main(String[] args) {
+
+        SimpleIO.prompt("Enter width: ");
+        String U1 = SimpleIO.readLine();
+        int a = Integer.parseInt(U1);
+
+        SimpleIO.prompt("Enter height: ");
+        String U2 = SimpleIO.readLine();
+        int b = Integer.parseInt(U2);
+
+        SimpleIO.prompt("Enter number of bars on graph: ");
+        String U3 = SimpleIO.readLine();
+        int c = Integer.parseInt(U3);
+
+        int[] data = new int [c];
+
+        int i = 0;
+        while (i < data.length) {
+            SimpleIO.prompt("Enter value of bar" + (i + 1) + ": ");
+            String U4 = SimpleIO.readLine().trim();
+            data[i] = Integer.parseInt(U4);
+            i++;
+        }
+
+	int n = (((a - (5 * data.length + 1)) / (data.length)));
+
+	if (a != ((n * data.length) + (5 * (data.length + 1))))
+	    a = ((n * data.length) + (5 * (data.length + 1)));
+
+        DrawableFrame df = new DrawableFrame("Project 1");
+        df.show();
+        df.setSize(a, b);
+        Graphics g = df.getGraphicsContext();
+
+	i = 0;
+        while (i < data.length) {
+            g.setColor(new Color(255 - (10 * i), (10 * i), (10 * i)));
+	    g.drawRect(5 + ((5 + n) * i), b - data[i], n, data[i]);
+            g.fillRect(5 + ((5 + n) * i), b - data[i], n, data[i]);
+	    i++;
+        }
+
+        df.repaint();
+
+    }
+
+}
